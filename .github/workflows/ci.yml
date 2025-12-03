@@ -29,9 +29,8 @@ jobs:
     
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
+        python -m pip install --upgrade pip setuptools wheel
         pip install -r requirements.txt
-        pip install bandit safety
     
     - name: SAST - Run Bandit
       run: |
@@ -42,7 +41,7 @@ jobs:
         cat bandit-report.txt >> $GITHUB_STEP_SUMMARY
     
     - name: Upload Bandit report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: bandit-report
@@ -57,7 +56,7 @@ jobs:
         cat safety-report.txt >> $GITHUB_STEP_SUMMARY || echo "No vulnerabilities found or safety check completed."
     
     - name: Upload Safety report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: safety-report
