@@ -42,7 +42,7 @@ jobs:
         cat bandit-report.txt >> $GITHUB_STEP_SUMMARY
     
     - name: Upload Bandit report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: bandit-report
@@ -57,7 +57,7 @@ jobs:
         cat safety-report.txt >> $GITHUB_STEP_SUMMARY || echo "No vulnerabilities found or safety check completed."
     
     - name: Upload Safety report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: safety-report
